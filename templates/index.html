@@ -1,9 +1,35 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE1 html>
+<html lang="de">
 <head>
-  <title>Zahlenraten</title>
+    <meta charset="UTF-8">
+    <title>Highscore Liste</title>
 </head>
 <body>
-  <h1>Zahlenraten</h1>
+    <h1>Highscores</h1>
+
+    {% if highscores %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Platz</th>
+                    <th>Name</th>
+                    <th>Versuche</th>
+                    <th>Datum</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for score in highscores %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ score.username }}</td>
+                    <td>{{ score.attempts }}</td>
+                    <td>{{ score.created_at.strftime('%d.%m.%Y %H:%M') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Noch keine Highscores vorhanden. Spiel eine Runde!</p>
+    {% endif %}
 </body>
 </html>
