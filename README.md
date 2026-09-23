@@ -26,23 +26,9 @@
 
 ## Entwicklungsserver starten
 
-### Windows (CMD)
+### Flask
 ```cmd
 set FLASK_APP=app.py
 set FLASK_ENV=development
-flask run
-```
-
-### Windows (PowerShell)
-```powershell
-$env:FLASK_APP="app.py"
-$env:FLASK_ENV="development"
-flask run
-```
-
-### Linux / macOS
-```bash
-export FLASK_APP=app.py
-export FLASK_ENV=development
 flask run
 ```
