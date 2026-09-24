@@ -21,14 +21,18 @@
    ```bash
    flask db upgrade
    ```
-
+   
+4. **Entwicklungsserver starten:**
+   ```bash
+   set FLASK_APP=app.py
+   set FLASK_ENV=development
+   flask run --debug
+   ```
+   
 ---
 
-## Entwicklungsserver starten
+## Planung
 
-### Flask
-```cmd
-set FLASK_APP=app.py
-set FLASK_ENV=development
-flask run --debug
-```
+1. **Mockup:**
+   - [Link zu unserem Mockup](https://www.tldraw.com/p/UsJDbJ2l2E70o8UXFc3LP?d=v-56.-633.3620.2472.page) 
+   - Erstellt mit [tldraw](https://www.tldraw.com/)
