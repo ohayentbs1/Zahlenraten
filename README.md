@@ -35,4 +35,4 @@
 
 1. **Mockup:**
    - [Link zu unserem Mockup](https://www.tldraw.com/p/UsJDbJ2l2E70o8UXFc3LP) 
-   - Erstellt mit [tldraw](https://www.tldraw.com/)
+   - Erstellt mit [tldraw](https://tldraw.dev/)
