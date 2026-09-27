@@ -2,4 +2,4 @@ instance/
 *.db
 .venv/
 
-.idea/*.iml
+.idea/
