@@ -1,10 +1,14 @@
-from flask import Flask, render_template
+import os
+import secrets
+from datetime import datetime
+
+from flask import Flask, abort, redirect, render_template, request, session, url_for
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from datetime import datetime
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or secrets.token_hex(32)
 bootstrap = Bootstrap5(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -25,3 +29,27 @@ class Highscore(db.Model):
 def index():
     highscores = Highscore.query.order_by(Highscore.attempts.asc()).all()
     return render_template('index.html', highscores=highscores)
+
+
+@app.route('/start-game', methods=['POST'])
+def start_game():
+    player_name = request.form.get('player_name', '').strip()
+    if not player_name or len(player_name) > 80:
+        abort(400, description='Der Spielername muss zwischen 1 und 80 Zeichen lang sein.')
+
+    session.clear()
+    session['player_name'] = player_name
+    session['attempts'] = 0
+    return redirect(url_for('game'))
+
+
+@app.route('/game')
+def game():
+    if 'player_name' not in session or 'attempts' not in session:
+        return redirect(url_for('index'))
+
+    return render_template(
+        'game.html',
+        player_name=session['player_name'],
+        attempts=session['attempts'],
+    )
