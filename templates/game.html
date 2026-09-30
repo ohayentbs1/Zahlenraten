@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<div class="container pt-2 pb-5 text-center">
-    <h2 class="mb-4">Das Spiel beginnt!</h2>
+<div class="container pt-2 pb-5 text-center mt-5">
+    <h3 class="mb-4">Das Spiel beginnt!</h3>
     <p class="mb-2">Spielername: <strong>{{ player_name }}</strong></p>
     <p>Versuche: <strong>{{ attempts }}</strong></p>
-</div>
 
+    <form method="post" action="{{ url_for('game') }}" class="mx-auto" style="max-width: 20rem;">
+        <label for="guess" class="form-label">Deine Zahl (1 bis 100)</label>
+        <input type="number" class="form-control mb-3" id="guess" name="guess" min="1" max="100" required>
+        <button type="submit" class="btn btn-primary">Bestätigen</button>
+    </form>
+</div>
+ 
 {% endblock %}
