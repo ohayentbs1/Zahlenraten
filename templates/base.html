@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
     <head>
         {% block head %}
         <meta charset="utf-8">
@@ -9,10 +9,13 @@
             {{ bootstrap.load_css() }}
         {% endblock %}
 
-        <title>Your page title</title>
+        <title>{% block title %}Zahlenraten{% endblock %}</title>
         {% endblock %}
     </head>
     <body>
+        <header class="container pt-3 pb-0 text-center">
+            <h1>Zahlenraten</h1>
+        </header>
         {% block content %}{% endblock %}
 
         {% block scripts %}
