@@ -36,3 +36,11 @@
 1. **Mockup:**
    - [Link zu unserem Mockup](https://www.tldraw.com/p/UsJDbJ2l2E70o8UXFc3LP) 
    - Erstellt mit [tldraw](https://tldraw.dev/)
+
+2. **UML-Aktivitätsdiagram:**
+   - [Link zu unserem UML-Diagramm](https://tbseins-my.sharepoint.com/personal/ole_hayen_students_tbs1_de/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fole%5Fhayen%5Fstudents%5Ftbs1%5Fde%2FDocuments%2FMicrosoft%20Teams%2DChatdateien%2FZahlrenratenUML%2Edrawio%2Epng&parent=%2Fpersonal%2Fole%5Fhayen%5Fstudents%5Ftbs1%5Fde%2FDocuments%2FMicrosoft%20Teams%2DChatdateien)
+   - Erstellt mit [drawio](https://www.drawio.com/)
+
+3. **Pflichtenheft:**
+   - [Link zu unserem Pflichtenheft](https://tbseins-my.sharepoint.com/:w:/g/personal/william_gutschmidt_students_tbs1_de/IQAsEOh0zGPmRqH68TsyqKtOAdhBwoQDhgGsFK_fMgw66nM)
+   - Erstellt mit [word](https://www.microsoft.com/de-de/microsoft-365/word)
