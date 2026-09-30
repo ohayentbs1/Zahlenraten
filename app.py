@@ -1,11 +1,11 @@
 import os
 import secrets
-from datetime import datetime
 
-from flask import Flask, abort, redirect, render_template, request, session, url_for
+from flask import Flask
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from routes import register_routes
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or secrets.token_hex(32)
@@ -16,57 +16,4 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-class Highscore(db.Model):
-    __tablename__ = 'highscores'
-
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), nullable=False)
-    attempts = db.Column(db.Integer, nullable=False)
-    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-
-
-@app.route('/')
-def index():
-    highscores = Highscore.query.order_by(Highscore.attempts.asc()).all()
-    return render_template('index.html', highscores=highscores)
-
-
-@app.route('/start-game', methods=['POST'])
-def start_game():
-    player_name = request.form.get('player_name', '').strip()
-    if not player_name or len(player_name) > 80:
-        abort(400, description='Der Spielername muss zwischen 1 und 80 Zeichen lang sein.')
-
-    session.clear()
-    session['player_name'] = player_name
-    session['attempts'] = 0
-    session['target_number'] = secrets.randbelow(100) + 1
-    return redirect(url_for('game'))
-
-
-@app.route('/game', methods=['GET', 'POST'])
-def game():
-    if 'player_name' not in session or 'attempts' not in session:
-        return redirect(url_for('index'))
-
-    guess_result = None
-    if request.method == 'POST':
-        guess = request.form.get('guess', type=int)
-        if guess is None or not 1 <= guess <= 100:
-            abort(400, description='Die Zahl muss zwischen 1 und 100 liegen.')
-        session['attempts'] += 1
-
-        target_number = session['target_number']
-        if guess > target_number:
-            guess_result = 'Zu groß'
-        elif guess < target_number:
-            guess_result = 'zu klein'
-        else:
-            guess_result = 'Richtig'
-
-    return render_template(
-        'game.html',
-        player_name=session['player_name'],
-        attempts=session['attempts'],
-        guess_result=guess_result,
-    )
+register_routes(app)
