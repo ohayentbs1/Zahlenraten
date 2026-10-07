@@ -4,10 +4,15 @@
 <div class="container pt-2 pb-5 text-center mt-5">
     <h2 class="mb-4">Herzlichen Glückwunsch, {{ player_name }}!</h2>
     <p>Du hast die richtige Zahl <strong>{{ target_number }}</strong> in <strong>{{ attempts }}</strong> Versuchen erraten.</p>
-    <form method="post" action="{{ url_for('new_try') }}">
-        <button type="submit" class="btn btn-primary">Neue Runde</button>
-    </form>
-    <a href="{{ url_for('index') }}" class="btn btn-primary mt-3">Beenden</a>
+    <div class="d-flex justify-content-center gap-3">
+        <form method="post" action="{{ url_for('new_try') }}">
+            <button type="submit" class="btn btn-primary"  style="width: 200px;">Neue Runde</button>
+        </form>
+
+        <form method="get" action="{{ url_for('index') }}">
+            <button type="submit" class="btn btn-primary"  style="width: 200px;">Beenden</button>
+        </form>
+    </div>
 
 </div>
 <div class="mt-top container">
