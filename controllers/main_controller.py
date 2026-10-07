@@ -3,7 +3,7 @@ import secrets
 from flask import abort, redirect, render_template, request, session, url_for
 
 from app import db
-from classes import Highscore
+from models import Highscore
 
 
 class MainController:
@@ -49,6 +49,7 @@ class MainController:
                 )
                 db.session.add(highscore)
                 db.session.commit()
+                session['highlighted_highscore_id'] = highscore.id
                 return redirect(url_for('win'))
 
         return render_template(
@@ -61,6 +62,12 @@ class MainController:
 
     @staticmethod
     def new_try():
+        player_name = session.get('player_name')
+        if player_name is None:
+            return redirect(url_for('index'))
+
+        session.clear()
+        session['player_name'] = player_name
         session['attempts'] = 0
         session['target_number'] = secrets.randbelow(100) + 1
         return redirect(url_for('game'))
@@ -70,10 +77,12 @@ class MainController:
         if 'player_name' not in session or 'attempts' not in session:
             return redirect(url_for('index'))
         highscores = Highscore.query.order_by(Highscore.attempts.asc()).all()
+        highlighted_highscore_id = session['highlighted_highscore_id']
         return render_template(
             'win.html',
             player_name=session['player_name'],
             attempts=session['attempts'],
             target_number=session['target_number'],
-            highscores=highscores
+            highscores=highscores,
+            highlighted_highscore_id=highlighted_highscore_id
         )

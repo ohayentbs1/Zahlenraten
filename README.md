@@ -23,10 +23,7 @@
    ```
    
 4. **Entwicklungsserver starten:**
-   Für gleichbleibende Sessions nach einem Serverneustart muss `SECRET_KEY` auf einen geheimen, dauerhaft gespeicherten Zufallswert gesetzt sein.
    ```bash
-   set FLASK_APP=app.py
-   set FLASK_ENV=development
    flask run --debug
    ```
    

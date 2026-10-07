@@ -1,4 +1,4 @@
-from Controllers.MainController import MainController
+from controllers.main_controller import MainController
 
 def register_routes(app):
     @app.route('/')

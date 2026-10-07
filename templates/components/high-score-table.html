@@ -14,7 +14,7 @@
 
         <tbody>
             {% for score in highscores %}
-            <tr>
+            <tr{% if highlighted_highscore_id is defined and score.id == highlighted_highscore_id %} class="table-success"{% endif %}>
                 <td>{{ loop.index }}</td>
                 <td>{{ score.username }}</td>
                 <td>{{ score.attempts }}</td>
