@@ -39,7 +39,7 @@
    - Erstellt mit [tldraw](https://tldraw.dev/)
 
 2. **UML-Aktivitätsdiagram:**
-   - [Link zu unserem UML-Diagramm](https://tbseins-my.sharepoint.com/personal/ole_hayen_students_tbs1_de/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fole%5Fhayen%5Fstudents%5Ftbs1%5Fde%2FDocuments%2FMicrosoft%20Teams%2DChatdateien%2FZahlrenratenUML%2Edrawio%2Epng&parent=%2Fpersonal%2Fole%5Fhayen%5Fstudents%5Ftbs1%5Fde%2FDocuments%2FMicrosoft%20Teams%2DChatdateien)
+   - [Link zu unserem UML-Diagramm](https://tbseins-my.sharepoint.com/:i:/g/personal/ole_hayen_students_tbs1_de/IQC_iMXiEns_R7yeNw-PunzwAbKmbnmVlzimFeyt4bqIZ-w)
    - Erstellt mit [drawio](https://www.drawio.com/)
 
 3. **Pflichtenheft:**
