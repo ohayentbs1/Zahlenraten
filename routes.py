@@ -14,3 +14,11 @@ def register_routes(app):
     @app.route('/game', methods=['GET', 'POST'])
     def game():
         return GameController.game()
+
+    @app.route('/win', methods=['GET'])
+    def win():
+        return GameController.win()
+
+    @app.route('/new-try', methods=['POST'])
+    def new_try():
+        return GameController.new_try()

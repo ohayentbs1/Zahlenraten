@@ -2,6 +2,9 @@ import secrets
 
 from flask import abort, redirect, render_template, request, session, url_for
 
+from app import db
+from classes import Highscore
+
 
 class GameController:
     @staticmethod
@@ -34,11 +37,36 @@ class GameController:
             elif guess < target_number:
                 guess_result = 'zu klein'
             else:
-                guess_result = 'Richtig'
+                highscore = Highscore(
+                    username=session['player_name'],
+                    attempts=session['attempts'],
+                )
+                db.session.add(highscore)
+                db.session.commit()
+                return redirect(url_for('win'))
 
         return render_template(
             'game.html',
             player_name=session['player_name'],
             attempts=session['attempts'],
-            guess_result=guess_result,
+            target_number=session['target_number'],
+            guess_result=guess_result
+        )
+
+    @staticmethod
+    def new_try():
+        session['attempts'] = 0
+        session['target_number'] = secrets.randbelow(100) + 1
+        return redirect(url_for('game'))
+
+    def win():
+        if 'player_name' not in session or 'attempts' not in session:
+            return redirect(url_for('index'))
+        highscores = Highscore.query.order_by(Highscore.attempts.asc()).all()
+        return render_template(
+            'win.html',
+            player_name=session['player_name'],
+            attempts=session['attempts'],
+            target_number=session['target_number'],
+            highscores=highscores
         )
