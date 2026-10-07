@@ -6,7 +6,13 @@ from app import db
 from classes import Highscore
 
 
-class GameController:
+class MainController:
+    @staticmethod
+    def index():
+        session.clear()
+        highscores = Highscore.query.order_by(Highscore.attempts.asc()).all()
+        return render_template('index.html', highscores=highscores)
+
     @staticmethod
     def start_game():
         player_name = request.form.get('player_name', '').strip()
@@ -59,6 +65,7 @@ class GameController:
         session['target_number'] = secrets.randbelow(100) + 1
         return redirect(url_for('game'))
 
+    @staticmethod
     def win():
         if 'player_name' not in session or 'attempts' not in session:
             return redirect(url_for('index'))
