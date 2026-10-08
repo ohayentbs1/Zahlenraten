@@ -9,9 +9,7 @@
             <button type="submit" class="btn btn-primary"  style="width: 200px;">Neue Runde</button>
         </form>
 
-        <form method="get" action="{{ url_for('index') }}">
-            <button type="submit" class="btn btn-primary"  style="width: 200px;">Beenden</button>
-        </form>
+        <a href="{{ url_for('index') }}" class="btn btn-primary" style="width: 200px;">Beenden</a>
     </div>
 
 </div>
