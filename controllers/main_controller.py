@@ -101,7 +101,7 @@ class MainController:
                 Highscore.attempts < highlighted_score.attempts,
                 and_(
                     Highscore.attempts == highlighted_score.attempts,
-                    Highscore.id <= highlighted_score.id
+                    Highscore.created_at <= highlighted_score.created_at
                 )
             )
         ).count()
