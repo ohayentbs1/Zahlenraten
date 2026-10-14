@@ -4,7 +4,8 @@
         {% block head %}
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-         <meta name="description" content="Zahlenraten-Spiel der ITF24c">
+        <meta name="description" content="Zahlenraten-Spiel der ITF24c">
+        <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
 
         {% block styles %}
             {{ bootstrap.load_css() }}
