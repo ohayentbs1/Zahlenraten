@@ -1,19 +1,22 @@
 {% extends "layouts/base.html" %}
 
+{% block title %}Spiel | Zahlenraten{% endblock %}
+
 {% block content %}
 <div class="container pt-2 pb-5 text-center mt-5">
-    <h3 class="mb-4">Das Spiel beginnt!</h3>
+    <h2 class="mb-4">Das Spiel beginnt!</h2>
     <p class="mb-2">Spielername: <strong>{{ player_name }}</strong></p>
     <p class="mb-2">Richtige Zahl (DEBUG): <strong>{{ target_number }}</strong></p>
     <p>Versuche: <strong>{{ attempts }}</strong></p>
 
-    {% if guess_result %}
-    <p>{{ guess_result }}</p>
-    {% endif %}
+    <p role="status" aria-live="polite" aria-atomic="true">
+        {% if guess_result %}{{ guess_result }}{% endif %}
+    </p>
 
     <form method="post" action="{{ url_for('game') }}" class="mx-auto" style="max-width: 20rem;">
-        <label for="guess" class="form-label">Deine Zahl (1 bis 100)</label>
-        <input type="number" class="form-control mb-3" id="guess" name="guess" min="1" max="100" required>
+        <label for="guess" class="form-label">Deine Zahl</label>
+        <input type="number" class="form-control mb-3" id="guess" name="guess" min="1" max="100" aria-describedby="guess-help" required>
+        <div id="guess-help" class="form-text mb-3">Gib eine ganze Zahl von 1 bis 100 ein.</div>
         <button type="submit" class="btn btn-primary">Bestätigen</button>
     </form>
 </div>
