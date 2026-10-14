@@ -1,6 +1,7 @@
 import secrets
 
 from flask import abort, redirect, render_template, request, session, url_for
+from sqlalchemy import and_, or_
 
 from app import db
 from models import Highscore
@@ -8,10 +9,23 @@ from models import Highscore
 
 class MainController:
     @staticmethod
+    def _highscore_pagination(page):
+        page = max(page or 1, 1)
+        query = Highscore.query.order_by(Highscore.attempts.asc(), Highscore.id.asc())
+        pagination = query.paginate(page=page, per_page=10, error_out=False)
+        if pagination.pages and page > pagination.pages:
+            pagination = query.paginate(page=pagination.pages, per_page=10, error_out=False)
+        return pagination
+
+    @staticmethod
     def index():
         session.clear()
-        highscores = Highscore.query.order_by(Highscore.attempts.asc()).all()
-        return render_template('index.html', highscores=highscores)
+        pagination = MainController._highscore_pagination(request.args.get('page', 1, type=int))
+        return render_template(
+            'index.html',
+            highscores=pagination.items,
+            pagination=pagination
+        )
 
     @staticmethod
     def start_game():
@@ -74,15 +88,34 @@ class MainController:
 
     @staticmethod
     def win():
-        if 'player_name' not in session or 'attempts' not in session:
+        required_session_keys = ('player_name', 'attempts', 'highlighted_highscore_id')
+        if any(key not in session for key in required_session_keys):
             return redirect(url_for('index'))
-        highscores = Highscore.query.order_by(Highscore.attempts.asc()).all()
         highlighted_highscore_id = session['highlighted_highscore_id']
+        highlighted_score = db.session.get(Highscore, highlighted_highscore_id)
+        if highlighted_score is None:
+            abort(404)
+
+        rank = Highscore.query.filter(
+            or_(
+                Highscore.attempts < highlighted_score.attempts,
+                and_(
+                    Highscore.attempts == highlighted_score.attempts,
+                    Highscore.id <= highlighted_score.id
+                )
+            )
+        ).count()
+        highlighted_page = (rank - 1) // 10 + 1
+        requested_page = request.args.get('page', type=int)
+        pagination = MainController._highscore_pagination(
+            requested_page if requested_page is not None else highlighted_page
+        )
         return render_template(
             'win.html',
             player_name=session['player_name'],
             attempts=session['attempts'],
             target_number=session['target_number'],
-            highscores=highscores,
+            highscores=pagination.items,
+            pagination=pagination,
             highlighted_highscore_id=highlighted_highscore_id
         )

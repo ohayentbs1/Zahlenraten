@@ -20,7 +20,7 @@
                     {% if highlighted_highscore_id is defined and score.id == highlighted_highscore_id %}
                     <span class="visually-hidden">Dein gerade erzieltes Ergebnis</span>
                     {% endif %}
-                    {{ loop.index }}
+                    {{ pagination.first + loop.index0 }}
                 </th>
                 <td>{{ score.username }}</td>
                 <td>{{ score.attempts }}</td>
@@ -36,4 +36,34 @@
         Noch keine Highscores vorhanden. Spiel eine Runde!
     </div>
 
+{% endif %}
+
+{% if pagination.pages > 1 %}
+<nav aria-label="Highscore-Seiten">
+    <ul class="pagination justify-content-center">
+        <li class="page-item{% if not pagination.has_prev %} disabled{% endif %}">
+            {% if pagination.has_prev %}
+            <a class="page-link" href="{{ url_for(request.endpoint, page=pagination.prev_num) }}" aria-label="Vorherige Seite">Zurück</a>
+            {% else %}
+            <span class="page-link" aria-disabled="true">Zurück</span>
+            {% endif %}
+        </li>
+        {% for page in range(1, pagination.pages + 1) %}
+        <li class="page-item{% if page == pagination.page %} active{% endif %}">
+            {% if page == pagination.page %}
+            <span class="page-link" aria-current="page">{{ page }}</span>
+            {% else %}
+            <a class="page-link" href="{{ url_for(request.endpoint, page=page) }}">{{ page }}</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+        <li class="page-item{% if not pagination.has_next %} disabled{% endif %}">
+            {% if pagination.has_next %}
+            <a class="page-link" href="{{ url_for(request.endpoint, page=pagination.next_num) }}" aria-label="Nächste Seite">Weiter</a>
+            {% else %}
+            <span class="page-link" aria-disabled="true">Weiter</span>
+            {% endif %}
+        </li>
+    </ul>
+</nav>
 {% endif %}
