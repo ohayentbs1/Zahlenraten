@@ -4,6 +4,7 @@
         {% block head %}
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+         <meta name="description" content="Zahlenraten-Spiel der ITF24c">
 
         {% block styles %}
             {{ bootstrap.load_css() }}
@@ -16,7 +17,9 @@
         <header class="container pt-3 pb-0 text-center">
             <h1>Zahlenraten</h1>
         </header>
-        {% block content %}{% endblock %}
+        <main>
+            {% block content %}{% endblock %}
+        </main>
 
         {% block scripts %}
             {{ bootstrap.load_js() }}
