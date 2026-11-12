@@ -47,3 +47,11 @@
    - [Link zu unserer Wirtschaftlichkeitsanalyse](https://tbseins-my.sharepoint.com/:x:/g/personal/fabian_lorenzen_students_tbs1_de/IQAg74RImwMxRZB9Y0hCsvI4AVFLvDzcjJ9RZlTqgdiTxwM?e=9PVgCh)
    - Erstellt mit [excel](https://www.microsoft.com/de-de/microsoft-365/excel)
 
+---
+
+## Projektabschluss
+
+1. **Präsentation:**
+   - [Link zu unserer Abschlusspräsentation](https://tbseins-my.sharepoint.com/:p:/g/personal/ole_hayen_students_tbs1_de/IQCnBlKgjlE5T7ONsoemrb94AWnpS2T-9GScEZR6LDmcO2g) 
+   - Erstellt mit [PowerPoint](https://www.microsoft.com/de-de/microsoft-365/powerpoint)
+
