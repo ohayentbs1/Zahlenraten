@@ -36,7 +36,7 @@
    - Erstellt mit [tldraw](https://tldraw.dev/)
 
 2. **UML-Aktivitätsdiagram:**
-   - [Link zu unserem UML-Diagramm](https://tbseins-my.sharepoint.com/:i:/g/personal/ole_hayen_students_tbs1_de/IQC_iMXiEns_R7yeNw-PunzwAbKmbnmVlzimFeyt4bqIZ-w)
+   - [Link zu unserem UML-Diagramm](https://tbseins-my.sharepoint.com/:i:/g/personal/ole_hayen_students_tbs1_de/IQC_iMXiEns_R7yeNw-PunzwAVGlFX9SXEUFOZpAUwYwcuo?e=YsryBS)
    - Erstellt mit [drawio](https://www.drawio.com/)
 
 3. **Pflichtenheft:**
