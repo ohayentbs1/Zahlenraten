@@ -40,11 +40,11 @@
    - Erstellt mit [drawio](https://www.drawio.com/)
 
 3. **Pflichtenheft:**
-   - [Link zu unserem Pflichtenheft](https://tbseins-my.sharepoint.com/:w:/g/personal/william_gutschmidt_students_tbs1_de/IQAsEOh0zGPmRqH68TsyqKtOAdhBwoQDhgGsFK_fMgw66nM)
+   - [Link zu unserem Pflichtenheft](https://tbseins-my.sharepoint.com/:w:/g/personal/william_gutschmidt_students_tbs1_de/IQBQ5g6w6gQrQ4kwT8vlBIlfAUI0vmzzDRT9Nc6SAwm1cg4)
    - Erstellt mit [word](https://www.microsoft.com/de-de/microsoft-365/word)
 
 4. **Wirtschaftlichkeitsanalyse:**
-   - [Link zu unserer Wirtschaftlichkeitsanalyse](https://tbseins-my.sharepoint.com/:x:/g/personal/fabian_lorenzen_students_tbs1_de/IQAg74RImwMxRZB9Y0hCsvI4AVFLvDzcjJ9RZlTqgdiTxwM?e=9PVgCh)
+   - [Link zu unserer Wirtschaftlichkeitsanalyse](https://tbseins-my.sharepoint.com/:x:/g/personal/fabian_lorenzen_students_tbs1_de/IQAg74RImwMxRZB9Y0hCsvI4Ad-pcLPLU90GKOBSKBL6T_Q)
    - Erstellt mit [excel](https://www.microsoft.com/de-de/microsoft-365/excel)
 
 ---
